@@ -27,10 +27,11 @@ public class ConsoleExercises {
         System.out.printf("%s, %s, and %s are your 3 words.%n", firstWord, middleWord, lastWord);
 //        // Q.1: Cannot enter less than 3 words - have to enter something to move to next command
 //        // Q.2: It doesn't pick up the 4th word - does it store it somewhere? Looks like it's wiped entirely
-//
+
 //
 //        // 3
         System.out.println("Please enter your favorite quote.");
+        input.nextLine();
         String userQuote = input.nextLine();
         System.out.printf("Your quote: %s", userQuote);
 //        // Q.1: Only picks up a single word. Discovery - whatever input is submitted, the .next method will pick up (ex: I entered dog 4 times in E.2, and my quote filled with 1 dog)
