@@ -38,7 +38,8 @@ public class Person {
         // Person person2 = new Person("John");
         // Below is true - values of the 2 reference points are the same
         // System.out.println("\n"+person1.getName().equals(person2.getName()));
-        // Below is false - although the 2 people share the same name value, they are       stored in different places in memory
+        // Below is false - although the 2 people share the same name value, they are stored in different places in memory
+        // == only works on primitive, not reference
         // System.out.println(person1 == person2);
 
         // Person person1 = new Person("John");
