@@ -6,8 +6,8 @@
 *.iml
 
 # Compiled output
-*.class
 out/*
 
 #Personal Practice
 src/JavaPersonalPractice.java
+src/HighLow.java
