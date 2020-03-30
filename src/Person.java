@@ -14,24 +14,23 @@ public class Person {
 
     // prints a message to the console using the person's name
     public void sayHello() {
-        System.out.printf("Hello %s%n", this.name);
+        System.out.println("Hello " + name + ".");
     }
 
     // constructor
-    public Person(String passedName) {
-        this.name = passedName;
+    public Person(String name) {
+        setName(name);
     }
 
     public static void main(String[] args) {
-        Person p1 = new Person("Kaleb Daniel");
-        System.out.println("p1.name = " + p1.name);
-        p1.getName();
-        p1.sayHello();
+        Person kaleb = new Person("Kaleb Daniel");
+        System.out.println("kaleb.name = " + kaleb.name);
+        kaleb.getName(); // doesn't actually print/do anything with a return - looks like getter's are mostly used to do comparisons or checks
+        kaleb.sayHello();
 
-        p1.setName("Test");
-        System.out.println("p1.name = " + p1.name);
-        p1.getName();
-        p1.sayHello();
+        kaleb.setName("Test");
+        System.out.println("new-name-after-setting.name = " + kaleb.name);
+        kaleb.sayHello();
 
         // Q.2
         // Person person1 = new Person("John");
