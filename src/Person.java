@@ -2,6 +2,11 @@ public class Person {
 
     private String name;
 
+    // constructor
+    public Person(String name) {
+        this.name = name;
+    }
+
     // returns the person's name
     public String getName() {
         return name;
@@ -17,15 +22,10 @@ public class Person {
         System.out.println("Hello " + name + ".");
     }
 
-    // constructor
-    public Person(String name) {
-        setName(name);
-    }
 
     public static void main(String[] args) {
         Person kaleb = new Person("Kaleb Daniel");
         System.out.println("kaleb.name = " + kaleb.name);
-        kaleb.getName(); // doesn't actually print/do anything with a return - looks like getter's are mostly used to do comparisons or checks
         kaleb.sayHello();
 
         kaleb.setName("Test");
