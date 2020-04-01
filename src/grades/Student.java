@@ -32,12 +32,13 @@ public class Student {
 
     public static void main(String[] args) {
 
-        Student kaleb = new Student("Kaleb");
-        kaleb.addGrade(100);
-        kaleb.addGrade(5);
-        kaleb.addGrade(23);
-        kaleb.addGrade(2000);
-        System.out.println("Name: " + kaleb.name);
-        System.out.println("Grade Average: " + kaleb.getGradeAverage());
+        // Test for new student object - does it output name and average?
+        // Student kaleb = new Student("Kaleb");
+        // kaleb.addGrade(100);
+        // kaleb.addGrade(5);
+        // kaleb.addGrade(23);
+        // kaleb.addGrade(2000);
+        // System.out.println("Name: " + kaleb.name);
+        // System.out.println("Grade Average: " + kaleb.getGradeAverage());
     }
 }

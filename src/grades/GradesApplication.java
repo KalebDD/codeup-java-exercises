@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class GradesApplication {
 
     public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        boolean userContinue = true;
 
         HashMap<String, Student> students = new HashMap<>();
 
@@ -35,22 +36,33 @@ public class GradesApplication {
         students.put("Chester88", chester);
         students.put("EvelynM", evie);
 
-        System.out.println("\nHere are our student's GitHub Usernames: " + students.keySet() + "\n");
+        // Begin Program
+        System.out.println("\nHere are our student's GitHub Usernames:\n");
 
-        boolean userContinue = true;
+        //Formatting to display GitHub usernames
+        for (String student : students.keySet()) {
+            System.out.printf("|  %s  ", student);
+        }
+        System.out.print("|");
 
+        // Prompts to check user input, display student data
         do {
-            System.out.println("Which one would you like to see more about?");
+        System.out.println("\nWhich one would you like to see more about?");
             String userSelection = scanner.nextLine();
 
             if (students.get(userSelection) == null) {
-                System.out.println("Sorry, no student found with that username.");
+                System.out.println("\nSorry, no student found with that username.");
+                System.out.println("Would you like to try again? [Y/N]");
             } else {
-                System.out.printf("%nName: %s%nGitHub Username: %s%nGrade Average: %.2f", students.get(userSelection).getName(), userSelection, students.get(userSelection).getGradeAverage());
-            }
+                System.out.println("\n- - - - - - - - - - -");
+                System.out.printf("Name: %s%nGitHub Username: %s%nGrade Average: %.2f",
+                        students.get(userSelection).getName(),
+                        userSelection,
+                        students.get(userSelection).getGradeAverage());
+                System.out.println("\n- - - - - - - - - - -");
             System.out.println("\nWould you like to see another student? [Y/N]");
+            }
             String userInput = scanner.nextLine();
-
             if (userInput.equalsIgnoreCase("n")) {
                 userContinue = false;
             }
