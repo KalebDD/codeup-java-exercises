@@ -17,6 +17,11 @@ public class Student {
         return name;
     }
 
+    //Getter for grades
+    public ArrayList<Integer> getGrades() {
+        return grades;
+    }
+
     public void addGrade(int grade) {
         grades.add(grade);
     }

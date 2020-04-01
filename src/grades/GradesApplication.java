@@ -8,6 +8,7 @@ public class GradesApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean userContinue = true;
+        int counter = 0;
 
         HashMap<String, Student> students = new HashMap<>();
 
@@ -43,30 +44,65 @@ public class GradesApplication {
         for (String student : students.keySet()) {
             System.out.printf("|  %s  ", student);
         }
-        System.out.print("|");
+        System.out.print("|\n");
 
-        // Prompts to check user input, display student data
+
         do {
-        System.out.println("\nWhich one would you like to see more about?");
-            String userSelection = scanner.nextLine();
+            System.out.println("\nWould you like to see individual or class data? [I/C]");
+            String classOrPerson = scanner.next();
 
-            if (students.get(userSelection) == null) {
-                System.out.println("\nSorry, no student found with that username.");
-                System.out.println("Would you like to try again? [Y/N]");
+            // INDIVIDUAL DATA
+            if (classOrPerson.equalsIgnoreCase("i")) {
+                System.out.println("\nWhich student would you like to see more about?");
+                scanner.nextLine();
+                String userSelection = scanner.nextLine();
+
+                if (students.get(userSelection) == null) {
+                    System.out.println("\nSorry, no student found with that username.");
+                    System.out.println("Would you like to go again? [Y/N]");
+
+                    String userInput = scanner.nextLine();
+                    if (userInput.equalsIgnoreCase("n")) {
+                        userContinue = false;
+                    }
+                } else {
+                    System.out.println("\n- - - - - - - - - - -");
+                    System.out.printf("Name: %s%nGitHub Username: %s%nGrades: %s%nGrade Average: %.2f",
+                            students.get(userSelection).getName(),
+                            userSelection,
+                            students.get(userSelection).getGrades(),
+                            students.get(userSelection).getGradeAverage());
+                    System.out.println("\n- - - - - - - - - - -");
+                    System.out.println("\nWould you like to go again? [Y/N]");
+
+                    String userInput = scanner.nextLine();
+                    if (userInput.equalsIgnoreCase("n")) {
+                        userContinue = false;
+                    }
+                }
+            }
+
+            // CLASS DATA
+            else if (classOrPerson.equalsIgnoreCase("c")) {
+
+                System.out.println("- - - - - Class Grades - - - - -");
+                for (String student : students.keySet()) {
+                    System.out.printf("%nName: %s%nGrades: %s%n", students.get(student).getName(), students.get(student).getGrades());
+                }
+                System.out.println("- - - - - - - - - - - - - - - -");
+                System.out.println("\nWould you like to go again? [Y/N]");
+
+                scanner.nextLine();
+                String userInput = scanner.nextLine();
+                if (userInput.equalsIgnoreCase("n")) {
+                    userContinue = false;
+                }
             } else {
-                System.out.println("\n- - - - - - - - - - -");
-                System.out.printf("Name: %s%nGitHub Username: %s%nGrade Average: %.2f",
-                        students.get(userSelection).getName(),
-                        userSelection,
-                        students.get(userSelection).getGradeAverage());
-                System.out.println("\n- - - - - - - - - - -");
-            System.out.println("\nWould you like to see another student? [Y/N]");
+                System.out.print("\nInvalid entry. Please try again.");
             }
-            String userInput = scanner.nextLine();
-            if (userInput.equalsIgnoreCase("n")) {
-                userContinue = false;
-            }
-        } while (userContinue);
-        System.out.println("Goodbye.");
+
+        }
+            while (userContinue) ;
+            System.out.println("Goodbye.");
+        }
     }
-}
