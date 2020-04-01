@@ -10,7 +10,6 @@ public class GradesApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean userContinue = true;
-        int counter = 0;
 
         HashMap<String, Student> students = new HashMap<>();
 
@@ -39,17 +38,17 @@ public class GradesApplication {
         students.put("Chester88", chester);
         students.put("EvelynM", evie);
 
+
         // Begin Program
         System.out.println("\nHere are our student's GitHub Usernames:\n");
-
-        //Formatting to display GitHub usernames
-        for (String student : students.keySet()) {
-            System.out.printf("|  %s  ", student);
-        }
-        System.out.print("|\n");
-
-
         do {
+
+            //Formatting to display GitHub usernames
+            System.out.println("\n");
+            for (String student : students.keySet()) {
+                System.out.printf("|  %s  ", student);
+            }
+            System.out.print("|\n");
             System.out.println("\nWould you like to see individual or class data? [I/C]");
             String classOrPerson = scanner.next();
 
