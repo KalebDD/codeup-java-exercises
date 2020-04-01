@@ -1,5 +1,7 @@
 package grades;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -85,10 +87,20 @@ public class GradesApplication {
             // CLASS DATA
             else if (classOrPerson.equalsIgnoreCase("c")) {
 
-                System.out.println("- - - - - Class Grades - - - - -");
+                System.out.println("- - - - - Class Data - - - - -");
+                int classGradeTotal = 0;
+                int totalNumberOfStudents = 0;
+
                 for (String student : students.keySet()) {
-                    System.out.printf("%nName: %s%nGrades: %s%n", students.get(student).getName(), students.get(student).getGrades());
+                    String studentName = students.get(student).getName();
+                    ArrayList<Integer> studentGrades = students.get(student).getGrades();
+                    classGradeTotal += students.get(student).getGradeAverage();
+                    totalNumberOfStudents++;
+                    System.out.printf("%nName: %s%nGrades: %s%n", studentName, studentGrades);
                 }
+
+                int classGradeAverage = classGradeTotal / totalNumberOfStudents;
+                System.out.printf("%nClass Grade Average: %d%n", classGradeAverage);
                 System.out.println("- - - - - - - - - - - - - - - -");
                 System.out.println("\nWould you like to go again? [Y/N]");
 
