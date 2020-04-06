@@ -39,11 +39,10 @@ public class GradesApplication {
         students.put("EvelynM", evie);
 
 
-        // Begin Program
         System.out.println("\nHere are our student's GitHub Usernames:\n");
         do {
 
-            //Formatting to display GitHub usernames
+            // Formatting to display GitHub usernames
             System.out.println("\n");
             for (String student : students.keySet()) {
                 System.out.printf("|  %s  ", student);
@@ -52,8 +51,8 @@ public class GradesApplication {
             System.out.println("\nWould you like to see individual or class data? [I/C]");
             String classOrPerson = scanner.next();
 
-            // INDIVIDUAL DATA
-            if (classOrPerson.equalsIgnoreCase("i")) {
+
+            if (classOrPerson.equalsIgnoreCase("i")) { // -----INDIVIDUAL DATA----- //
                 System.out.println("\nWhich student would you like to see more about?");
                 scanner.nextLine();
                 String userSelection = scanner.nextLine();
@@ -74,6 +73,7 @@ public class GradesApplication {
                             students.get(userSelection).getGrades(),
                             students.get(userSelection).getGradeAverage());
                     System.out.println("\n- - - - - - - - - - -");
+
                     System.out.println("\nWould you like to go again? [Y/N]");
 
                     String userInput = scanner.nextLine();
@@ -81,10 +81,7 @@ public class GradesApplication {
                         userContinue = false;
                     }
                 }
-            }
-
-            // CLASS DATA
-            else if (classOrPerson.equalsIgnoreCase("c")) {
+            } else if (classOrPerson.equalsIgnoreCase("c")) { // -----CLASS DATA----- //
 
                 System.out.println("- - - - - Class Data - - - - -");
                 int classGradeTotal = 0;
@@ -97,10 +94,10 @@ public class GradesApplication {
                     totalNumberOfStudents++;
                     System.out.printf("%nName: %s%nGrades: %s%n", studentName, studentGrades);
                 }
-
                 int classGradeAverage = classGradeTotal / totalNumberOfStudents;
                 System.out.printf("%nClass Grade Average: %d%n", classGradeAverage);
                 System.out.println("- - - - - - - - - - - - - - - -");
+
                 System.out.println("\nWould you like to go again? [Y/N]");
 
                 scanner.nextLine();
@@ -112,8 +109,7 @@ public class GradesApplication {
                 System.out.print("\nInvalid entry. Please try again.");
             }
 
-        }
-            while (userContinue) ;
-            System.out.println("Goodbye.");
-        }
+        } while (userContinue);
+        System.out.println("Goodbye.");
     }
+}

@@ -1,15 +1,39 @@
 package util;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Input {
+
+    // Create a new object called scanner - used to record keystrokes
+    // Access modifier set to private - only accessible within the class
+    // private Scanner scanner = new Scanner(System.in);
+
+    // Better way - pass down the scanner from the calling function (not a good idea to take control of System.in stream in a function)
+    // Basically, make sure your scanner is private
+
+    // Initialize Scanner object called scanner
+//    private static Scanner scanner;
+//
+//    //
+////    // Set the scanner
+//    public static void setScanner(Scanner input) {
+//        scanner = input;
+//    }
+//
+//
+//    String getString() {
+//        System.out.print("Please enter a word: ");
+//        return scanner.nextLine();
+//    }
+
     Scanner scanner = new Scanner(System.in);
 
-    String getString() {
-        System.out.print("Enter your favorite color: ");
-        String userInput = scanner.nextLine();
-        return userInput;
-    }
+//    static String getString() {
+//        return getString();
+//    }
 
     boolean yesNo() {
         System.out.print("Enter yes or no: ");
@@ -35,11 +59,16 @@ public class Input {
         return userNum;
     }
 
-    int getInt() {
-        System.out.print("Enter a number: ");
-        int userInt = scanner.nextInt();
-        return userInt;
-    }
+//    int getInt() throws Exception {
+//        System.out.println("Enter a number:");
+//        try {
+//            int userNum = Integer.parseInt(getString());
+//            return userNum;
+//        } catch (Exception e) {
+//            System.out.println("This is a test for the catch");
+//            return getInt();
+//        }
+//    }
 
     double getDouble(double min, double max) {
         double userNum = 0;
@@ -53,9 +82,39 @@ public class Input {
         return userNum;
     }
 
-    double getDouble() {
-        System.out.print("Enter a decimal number: ");
-        double userDouble = scanner.nextDouble();
-        return userDouble;
+    static double getDouble() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        double userNum = 0;
+        boolean validInput = false;
+
+        do {
+                System.out.println("Enter a number:");
+            try {
+                userNum = scanner.nextDouble();
+                validInput = true;
+            } catch (Exception e) {
+                System.out.println("Invalid format.");
+                scanner.nextLine();
+                userNum = 0;
+            }
+        } while (!validInput);
+        System.out.println(userNum + " is a number in Double form!");
+        return userNum;
+    }
+
+    public static void main(String[] args) throws Exception {
+        try {
+            System.out.println(getDouble());
+        } catch (Exception e) {
+            System.out.println("How did we get here.");
+        }
+
+        // test to see if directory exists
+        String dataPathName = "data";
+        Path dataPath = Paths.get(dataPathName);
+        if (Files.notExists(dataPath)) {
+            Files.createDirectory(dataPath);
+        }
+        System.out.println(Files.exists(dataPath));
     }
 }
